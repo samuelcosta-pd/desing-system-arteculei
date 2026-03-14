@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #fdafbf;
+  --color-primary-hover: #f896a9;
+  --color-primary-active: #f37d94;
+  --color-secondary: #96a35c;
+  --color-secondary-hover: #84914d;
+  --color-secondary-active: #73803f;
+  --color-background: #ffffff;
+  
+  --font-sans: "Avignon Pro", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Burgundia personal use", "Playfair Display", ui-serif, Georgia, serif;
+
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-blink: blink 0.7s infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: #0f172a;
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+  
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+  }
+}
+
+@layer utilities {
+  .ken-burns {
+    @apply transition-transform duration-1000 ease-out hover:scale-110;
+  }
+  .link-underline-hover {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100;
+  }
+  .glass-panel {
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-white/30 shadow-[0_4px_24px_0_rgba(31,38,135,0.05)];
+  }
+  .text-emphasis {
+    @apply font-display text-primary italic;
+  }
+}
